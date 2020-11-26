@@ -29,5 +29,11 @@ namespace News_project.UI
             lblDate.Text = newsBLL.Date.ToString();
             txtBody.Text = newsBLL.Body;
         }
+
+        private void btnComment_Click(object sender, EventArgs e)
+        {
+            FrmComment frmComment = new FrmComment(newsBLL.IdNews);
+            frmComment.ShowDialog();
+        }
     }
 }

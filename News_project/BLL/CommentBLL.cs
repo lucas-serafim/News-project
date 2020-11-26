@@ -10,13 +10,11 @@ namespace News_project.BLL
     {
         private int idComment;
         private int idNews;
-        private int idUser;
         private string body;
         private DateTime date;
 
         public int IdComment { get => idComment; set => idComment = value; }
         public int IdNews { get => idNews; set => idNews = value; }
-        public int IdUser { get => idUser; set => idUser = value; }
         public string Body { get => body; set => body = value; }
         public DateTime Date { get => date; set => date = value; }
     }

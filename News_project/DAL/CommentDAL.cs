@@ -17,12 +17,11 @@ namespace News_project.DAL
         {
             MySqlCommand cmd = new MySqlCommand();
             cmd.CommandText = @"INSERT INTO COMMENT
-                                (IDNEWS, IDUSER, BODY, DATE)
+                                (IDNEWS, BODY, DATE)
                                 VALUES
-                                (@IDNEWS, @IDUSER, @BODY, @DATE)";
+                                (@IDNEWS, @BODY, @DATE)";
 
             cmd.Parameters.AddWithValue("@IDNEWS", commentBLL.IdNews);
-            cmd.Parameters.AddWithValue("@IDUSER", commentBLL.IdUser);
             cmd.Parameters.AddWithValue("@BODY", commentBLL.Body);
             cmd.Parameters.AddWithValue("@DATE", commentBLL.Date);
 
@@ -37,12 +36,10 @@ namespace News_project.DAL
             MySqlCommand cmd = new MySqlCommand();
             cmd.CommandText = @"UPDATE COMMENT SET
                                 IDNEWS = @IDNEWS,
-                                IDUSER = @IDUSER,
-                                BODY = BODY
+                                BODY = @BODY
                                 WHERE ID = @ID";
 
             cmd.Parameters.AddWithValue("@IDNEWS", commentBLL.IdNews);
-            cmd.Parameters.AddWithValue("@IDUSER", commentBLL.IdUser);
             cmd.Parameters.AddWithValue("@BODY", commentBLL.Body);
             cmd.Parameters.AddWithValue("@DATE", commentBLL.Date);
             cmd.Parameters.AddWithValue("@ID", commentBLL.IdComment);
@@ -66,14 +63,37 @@ namespace News_project.DAL
             connection.Disconnect();
         }
 
-        public DataTable FindAll()
+        public DataTable FindAll(BLL.CommentBLL commentBLL)
         {
-            MySqlDataAdapter dataAdapter = new MySqlDataAdapter("SELECT * FROM COMMENT", connection.Connect());
+            MySqlDataAdapter dataAdapter = new MySqlDataAdapter("SELECT * FROM COMMENT WHERE IDNEWS = @IDNEWS", connection.Connect());
+
+            dataAdapter.SelectCommand.Parameters.AddWithValue("@IDNEWS", commentBLL.IdNews);
+
             DataTable dataTable = new DataTable();
             dataAdapter.Fill(dataTable);
             connection.Disconnect();
 
             return dataTable;
+        }
+
+        public BLL.CommentBLL FindCategory(BLL.CommentBLL commentBLL)
+        {
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.CommandText = "SELECT * FROM COMMENT WHERE ID = @ID";
+            cmd.Parameters.AddWithValue("@ID", commentBLL.IdComment);
+            cmd.Connection = connection.Connect();
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+
+            if (dataReader.Read())
+            {
+                commentBLL.IdComment = Convert.ToInt32(dataReader["ID"]);
+                commentBLL.Body = dataReader["BODY"].ToString();
+            }
+
+            dataReader.Close();
+            connection.Disconnect();
+
+            return commentBLL;
         }
     }
 }

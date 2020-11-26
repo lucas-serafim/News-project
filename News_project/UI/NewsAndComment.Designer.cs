@@ -35,7 +35,6 @@
             this.lblCategory = new System.Windows.Forms.Label();
             this.txtBody = new System.Windows.Forms.TextBox();
             this.btnComment = new System.Windows.Forms.Button();
-            this.btnNewComment = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -102,29 +101,19 @@
             // btnComment
             // 
             this.btnComment.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnComment.Location = new System.Drawing.Point(322, 440);
+            this.btnComment.Location = new System.Drawing.Point(236, 440);
             this.btnComment.Name = "btnComment";
             this.btnComment.Size = new System.Drawing.Size(150, 30);
             this.btnComment.TabIndex = 12;
             this.btnComment.Text = "Comentarios";
             this.btnComment.UseVisualStyleBackColor = true;
-            // 
-            // btnNewComment
-            // 
-            this.btnNewComment.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNewComment.Location = new System.Drawing.Point(166, 440);
-            this.btnNewComment.Name = "btnNewComment";
-            this.btnNewComment.Size = new System.Drawing.Size(150, 30);
-            this.btnNewComment.TabIndex = 13;
-            this.btnNewComment.Text = "Novo Comentario";
-            this.btnNewComment.UseVisualStyleBackColor = true;
+            this.btnComment.Click += new System.EventHandler(this.btnComment_Click);
             // 
             // NewsAndComment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(628, 482);
-            this.Controls.Add(this.btnNewComment);
             this.Controls.Add(this.btnComment);
             this.Controls.Add(this.txtBody);
             this.Controls.Add(this.lblCategory);
@@ -148,6 +137,5 @@
         private System.Windows.Forms.Label lblCategory;
         private System.Windows.Forms.TextBox txtBody;
         private System.Windows.Forms.Button btnComment;
-        private System.Windows.Forms.Button btnNewComment;
     }
 }
