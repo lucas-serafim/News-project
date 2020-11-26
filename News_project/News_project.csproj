@@ -116,6 +116,12 @@
     <Compile Include="UI\FrmCategory.Designer.cs">
       <DependentUpon>FrmCategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\FrmNews.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmNews.Designer.cs">
+      <DependentUpon>FrmNews.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\FrmUser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +142,9 @@
     </Compile>
     <EmbeddedResource Include="UI\FrmCategory.resx">
       <DependentUpon>FrmCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FrmNews.resx">
+      <DependentUpon>FrmNews.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmUser.resx">
       <DependentUpon>FrmUser.cs</DependentUpon>

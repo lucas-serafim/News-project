@@ -16,7 +16,7 @@ namespace News_project
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new UI.FrmCategory());
+            Application.Run(new UI.FrmNews());
         }
     }
 }

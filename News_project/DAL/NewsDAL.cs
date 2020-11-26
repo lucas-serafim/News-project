@@ -37,7 +37,7 @@ namespace News_project.DAL
         public void Update(BLL.NewsBLL newsBLL)
         {
             MySqlCommand cmd = new MySqlCommand();
-            cmd.CommandText = @"UPDATE USER SET
+            cmd.CommandText = @"UPDATE NEWS SET
                                 IDCATEGORY = @IDCATEGORY,
                                 TITLE = @TITLE,
                                 SUBTITLE = @SUBTITLE,
@@ -64,8 +64,9 @@ namespace News_project.DAL
         {
             MySqlCommand cmd = new MySqlCommand();
             cmd.CommandText = @"DELETE FROM NEWS WHERE ID = @ID";
-
             cmd.Parameters.AddWithValue(@"ID", newsBLL.IdNews);
+
+            cmd.Connection = connection.Connect();
             cmd.ExecuteNonQuery();
 
             connection.Disconnect();
@@ -79,6 +80,32 @@ namespace News_project.DAL
             connection.Disconnect();
 
             return dataTable;
+        }
+
+        public BLL.NewsBLL FindNews(BLL.NewsBLL newsBLL)
+        {
+            MySqlCommand cmd = new MySqlCommand();
+
+            cmd.CommandText = "SELECT * FROM NEWS WHERE ID = @ID";
+            cmd.Parameters.AddWithValue("@ID", newsBLL.IdNews);
+            cmd.Connection = connection.Connect();
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+
+            if (dataReader.Read())
+            {
+
+                newsBLL.IdNews = Convert.ToInt32(dataReader["ID"]);
+                newsBLL.IdCategory = Convert.ToInt32(dataReader["IDCATEGORY"]);
+                newsBLL.Title = dataReader["TITLE"].ToString();
+                newsBLL.SubTitle = dataReader["SUBTITLE"].ToString();
+                newsBLL.Body = dataReader["BODY"].ToString();
+                newsBLL.Author = dataReader["AUTHOR"].ToString();
+                newsBLL.Date = (DateTime)dataReader["DATE"];
+            }
+
+            dataReader.Close();
+            connection.Disconnect();
+            return newsBLL;
         }
     }
 }
