@@ -19,7 +19,7 @@ namespace News_project.DAL
             cmd.CommandText = @"INSERT INTO USER
                                 (NAME, PASSWORD, EMAIL, USERPROFILE)
                                 VALUES
-                                (@NAME, @PASSWORD, @EMAIL, USERPROFILE)";
+                                (@NAME, @PASSWORD, @EMAIL, @USERPROFILE)";
 
             cmd.Parameters.AddWithValue("@NAME", userBLL.Name);
             cmd.Parameters.AddWithValue("@PASSWORD", userBLL.Password);
@@ -40,13 +40,13 @@ namespace News_project.DAL
                                 PASSWORD = @PASSWORD,
                                 EMAIL = @EMAIL,
                                 USERPROFILE = @USERPROFILE
-                                WHERE IDUSER = @IDUSER";
+                                WHERE ID = @ID";
 
             cmd.Parameters.AddWithValue("@NAME", userBLL.Name);
             cmd.Parameters.AddWithValue("@PASSWORD", userBLL.Password);
             cmd.Parameters.AddWithValue("@EMAIL", userBLL.Email);
             cmd.Parameters.AddWithValue("@USERPROFILE", userBLL.UserProfile);
-            cmd.Parameters.AddWithValue("@IDUSER", userBLL.IdUser);
+            cmd.Parameters.AddWithValue("@ID", userBLL.IdUser);
 
             cmd.Connection = connection.Connect();
             cmd.ExecuteNonQuery();
@@ -57,8 +57,8 @@ namespace News_project.DAL
         public void Delete(BLL.UserBLL userBLL)
         {
             MySqlCommand cmd = new MySqlCommand();
-            cmd.CommandText = @"DELETE FROM USER WHERE IDUSER = @IDUSER";
-            cmd.Parameters.AddWithValue("@IDUSER", userBLL.IdUser);
+            cmd.CommandText = @"DELETE FROM USER WHERE ID = @ID";
+            cmd.Parameters.AddWithValue("@ID", userBLL.IdUser);
 
             cmd.Connection = connection.Connect();
             cmd.ExecuteNonQuery();
@@ -66,7 +66,7 @@ namespace News_project.DAL
             connection.Disconnect();
         }
 
-        public DataTable FindAll(BLL.UserBLL userBLL)
+        public DataTable FindAll()
         {
             MySqlDataAdapter dataAdapter = new MySqlDataAdapter(@"SELECT * FROM USER", connection.Connect());
 
@@ -75,6 +75,29 @@ namespace News_project.DAL
             connection.Disconnect();
 
             return dataTable;
+        }
+
+        public BLL.UserBLL FindUser(BLL.UserBLL userBLL)
+        {
+            MySqlCommand cmd = new MySqlCommand();
+
+            cmd.CommandText = "SELECT * FROM USER WHERE ID = @ID";
+            cmd.Parameters.AddWithValue("@ID", userBLL.IdUser);
+            cmd.Connection = connection.Connect();
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+
+            if (dataReader.Read())
+            {
+                userBLL.IdUser = Convert.ToInt32(dataReader["ID"]);
+                userBLL.Name = dataReader["NAME"].ToString();
+                userBLL.Email = dataReader["EMAIL"].ToString();
+                userBLL.Password = dataReader["PASSWORD"].ToString();
+                userBLL.UserProfile = dataReader["USERPROFILE"].ToString();
+            }
+
+            dataReader.Close();
+            connection.Disconnect();
+            return userBLL;
         }
     }
 }

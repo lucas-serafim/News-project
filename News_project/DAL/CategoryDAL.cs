@@ -53,7 +53,7 @@ namespace News_project.DAL
             connection.Disconnect();
         }
 
-        public DataTable FindAll(BLL.CategoryBLL categoryBLL)
+        public DataTable FindAll()
         {
             MySqlDataAdapter dataAdapter = new MySqlDataAdapter("SELECT * FROM CATEGORY", connection.Connect());
             DataTable dataTable = new DataTable();

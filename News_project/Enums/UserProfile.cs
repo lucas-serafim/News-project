@@ -8,8 +8,8 @@ namespace News_project.Enums
 {
     enum UserProfile
     {
-        Administrator,
-        Journalist,
-        Client,
+        Administrador,
+        Jornalista,
+        Cliente,
     }
 }

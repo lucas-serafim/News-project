@@ -66,7 +66,7 @@ namespace News_project.DAL
             connection.Disconnect();
         }
 
-        public DataTable FindAll(BLL.NewsBLL newsBLL)
+        public DataTable FindAll()
         {
             MySqlDataAdapter dataAdapter = new MySqlDataAdapter("SELECT * FROM NEWS", connection.Connect());
             DataTable dataTable = new DataTable();
