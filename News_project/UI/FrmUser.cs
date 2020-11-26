@@ -49,15 +49,18 @@ namespace News_project.UI
                 {
                     userDAL.Update(userBLL);
                     MessageBox.Show("Dados atualizados com sucesso!");
+                    clear();
+
+                    update = false;
                 }
                 else
                 {
                     userDAL.Register(userBLL);
                     MessageBox.Show("Cadastro realizado com sucesso!");
+                    clear();
                 }
             }
-
-            clear();
+            
             dvgUsers.DataSource = userDAL.FindAll();
         }
 

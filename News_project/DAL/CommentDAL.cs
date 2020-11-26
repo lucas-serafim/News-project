@@ -17,13 +17,14 @@ namespace News_project.DAL
         {
             MySqlCommand cmd = new MySqlCommand();
             cmd.CommandText = @"INSERT INTO COMMENT
-                                (IDNEWS, IDUSER, BODY)
+                                (IDNEWS, IDUSER, BODY, DATE)
                                 VALUES
-                                (@IDNEWS, @IDUSER, @BODY)";
+                                (@IDNEWS, @IDUSER, @BODY, @DATE)";
 
             cmd.Parameters.AddWithValue("@IDNEWS", commentBLL.IdNews);
             cmd.Parameters.AddWithValue("@IDUSER", commentBLL.IdUser);
             cmd.Parameters.AddWithValue("@BODY", commentBLL.Body);
+            cmd.Parameters.AddWithValue("@DATE", commentBLL.Date);
 
             cmd.Connection = connection.Connect();
             cmd.ExecuteNonQuery();
@@ -38,12 +39,13 @@ namespace News_project.DAL
                                 IDNEWS = @IDNEWS,
                                 IDUSER = @IDUSER,
                                 BODY = BODY
-                                WHERE IDCOMMENT = @IDCOMMENT";
+                                WHERE ID = @ID";
 
             cmd.Parameters.AddWithValue("@IDNEWS", commentBLL.IdNews);
             cmd.Parameters.AddWithValue("@IDUSER", commentBLL.IdUser);
             cmd.Parameters.AddWithValue("@BODY", commentBLL.Body);
-            cmd.Parameters.AddWithValue("@IDCOMMENT", commentBLL.IdComment);
+            cmd.Parameters.AddWithValue("@DATE", commentBLL.Date);
+            cmd.Parameters.AddWithValue("@ID", commentBLL.IdComment);
 
             cmd.Connection = connection.Connect();
             cmd.ExecuteNonQuery();
@@ -54,9 +56,9 @@ namespace News_project.DAL
         public void Delete(BLL.CommentBLL commentBLL)
         {
             MySqlCommand cmd = new MySqlCommand();
-            cmd.CommandText = @"DELETE FROM COMMENT WHERE IDCOMMENT = @IDCOMMENT";
+            cmd.CommandText = @"DELETE FROM COMMENT WHERE ID = @ID";
 
-            cmd.Parameters.AddWithValue("@IDCOMMENT", commentBLL.IdComment);
+            cmd.Parameters.AddWithValue("@ID", commentBLL.IdComment);
 
             cmd.Connection = connection.Connect();
             cmd.ExecuteNonQuery();

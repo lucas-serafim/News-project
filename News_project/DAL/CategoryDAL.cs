@@ -29,10 +29,10 @@ namespace News_project.DAL
         public void Update(BLL.CategoryBLL categoryBLL)
         {
             MySqlCommand cmd = new MySqlCommand();
-            cmd.CommandText = @"UPDATE CATEGORY SET NAME = @NAME WHERE IDCATEGORY = @IDCATEGORY";
+            cmd.CommandText = @"UPDATE CATEGORY SET NAME = @NAME WHERE ID = @ID";
 
             cmd.Parameters.AddWithValue("@NAME", categoryBLL.Name);
-            cmd.Parameters.AddWithValue("@IDCATEGORY", categoryBLL.IdCategory);
+            cmd.Parameters.AddWithValue("@ID", categoryBLL.IdCategory);
 
             cmd.Connection = connection.Connect();
             cmd.ExecuteNonQuery();
@@ -43,9 +43,9 @@ namespace News_project.DAL
         public void Delete(BLL.CategoryBLL categoryBLL)
         {
             MySqlCommand cmd = new MySqlCommand();
-            cmd.CommandText = @"DELETE FROM CATEGORY WHERE IDCATEGORY = @IDCATEGORY";
+            cmd.CommandText = @"DELETE FROM CATEGORY WHERE ID = @ID";
 
-            cmd.Parameters.AddWithValue("@IDCATEGORY", categoryBLL.IdCategory);
+            cmd.Parameters.AddWithValue("@ID", categoryBLL.IdCategory);
 
             cmd.Connection = connection.Connect();
             cmd.ExecuteNonQuery();
@@ -61,6 +61,26 @@ namespace News_project.DAL
             connection.Disconnect();
 
             return dataTable;
+        }
+
+        public BLL.CategoryBLL FindCategory(BLL.CategoryBLL categoryBLL)
+        {
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.CommandText = "SELECT * FROM CATEGORY WHERE ID = @ID";
+            cmd.Parameters.AddWithValue("@ID", categoryBLL.IdCategory);
+            cmd.Connection = connection.Connect();
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+
+            if (dataReader.Read())
+            {
+                categoryBLL.IdCategory = Convert.ToInt32(dataReader["ID"]);
+                categoryBLL.Name = dataReader["NAME"].ToString();
+            }
+
+            dataReader.Close();
+            connection.Disconnect();
+
+            return categoryBLL;
         }
     }
 }

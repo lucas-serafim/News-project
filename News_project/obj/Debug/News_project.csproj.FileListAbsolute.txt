@@ -34,3 +34,4 @@ C:\Users\lucas_000\source\repos\News_project\News_project\obj\Debug\News_project
 C:\Users\lucas_000\source\repos\News_project\News_project\obj\Debug\News_project.csproj.CopyComplete
 C:\Users\lucas_000\source\repos\News_project\News_project\obj\Debug\News_project.exe
 C:\Users\lucas_000\source\repos\News_project\News_project\obj\Debug\News_project.pdb
+C:\Users\lucas_000\source\repos\News_project\News_project\obj\Debug\News_project.UI.FrmCategory.resources

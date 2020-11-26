@@ -17,13 +17,15 @@ namespace News_project.DAL
         {
             MySqlCommand cmd = new MySqlCommand();
             cmd.CommandText = @"INSERT INTO NEWS
-                                (IDCATEGORY, TITLE, SUBTITLE, BODY, DATE)
+                                (IDCATEGORY, TITLE, SUBTITLE, BODY, AUTHOR, DATE)
                                 VALUES
-                                (@IDCATEGORY, @TITLE, @SUBTITLE, @BODY, @DATE)";
+                                (@IDCATEGORY, @TITLE, @SUBTITLE, @BODY, @AUTHOR, @DATE)";
 
             cmd.Parameters.AddWithValue("@IDCATEGORY", newsBLL.IdCategory);
             cmd.Parameters.AddWithValue("@TITLE", newsBLL.Title);
             cmd.Parameters.AddWithValue("@SUBTITLE", newsBLL.SubTitle);
+            cmd.Parameters.AddWithValue("@BODY", newsBLL.Body);
+            cmd.Parameters.AddWithValue("@AUTHOR", newsBLL.Author);
             cmd.Parameters.AddWithValue("@DATE", newsBLL.Date);
 
             cmd.Connection = connection.Connect();
@@ -40,14 +42,17 @@ namespace News_project.DAL
                                 TITLE = @TITLE,
                                 SUBTITLE = @SUBTITLE,
                                 BODY = @BODY,
+                                AUTHOR = @AUTHOR,
                                 DATE = @DATE
-                                WHERE IDNEWS = @IDNEWS";
+                                WHERE ID = @ID";
 
             cmd.Parameters.AddWithValue("@IDCATEGORY", newsBLL.IdCategory);
             cmd.Parameters.AddWithValue("@TITLE", newsBLL.Title);
             cmd.Parameters.AddWithValue("@SUBTITLE", newsBLL.SubTitle);
+            cmd.Parameters.AddWithValue("@BODY", newsBLL.Body);
+            cmd.Parameters.AddWithValue("@AUTHOR", newsBLL.Author);
             cmd.Parameters.AddWithValue("@DATE", newsBLL.Date);
-            cmd.Parameters.AddWithValue("@IDNEWS", newsBLL.IdNews);
+            cmd.Parameters.AddWithValue("@ID", newsBLL.IdNews);
 
             cmd.Connection = connection.Connect();
             cmd.ExecuteNonQuery();
@@ -58,9 +63,9 @@ namespace News_project.DAL
         public void Delete(BLL.NewsBLL newsBLL)
         {
             MySqlCommand cmd = new MySqlCommand();
-            cmd.CommandText = @"DELETE FROM NEWS WHERE IDNEWS = @IDNEWS";
+            cmd.CommandText = @"DELETE FROM NEWS WHERE ID = @ID";
 
-            cmd.Parameters.AddWithValue(@"IDNEWS", newsBLL.IdNews);
+            cmd.Parameters.AddWithValue(@"ID", newsBLL.IdNews);
             cmd.ExecuteNonQuery();
 
             connection.Disconnect();
