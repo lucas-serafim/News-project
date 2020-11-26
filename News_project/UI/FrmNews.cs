@@ -106,6 +106,17 @@ namespace News_project.UI
             }
         }
 
+        private void btnOpenNews_Click(object sender, EventArgs e)
+        {
+            if (dvgNews.RowCount > 0)
+            {
+                int id = Convert.ToInt32(dvgNews[0, dvgNews.CurrentRow.Index].Value);
+
+                NewsAndComment newsAndComment = new NewsAndComment(id);
+                newsAndComment.ShowDialog();
+            }
+        }
+
         public void clear()
         {
             txtTitle.Clear();
