@@ -75,11 +75,18 @@ namespace News_project.UI
                 if (MessageBox.Show("Deseja realmente excluir?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     categoryBLL.IdCategory = Convert.ToInt16(dvgCategory[0, dvgCategory.CurrentRow.Index].Value);
-                    categoryDAL.Delete(categoryBLL);
+                    bool info = categoryDAL.Delete(categoryBLL);
 
-                    dvgCategory.DataSource = categoryDAL.FindAll();
+                    if (info)
+                    {
+                        dvgCategory.DataSource = categoryDAL.FindAll();
 
-                    MessageBox.Show("Exclusão realizada com sucesso", "Informacao", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Exclusão realizada com sucesso", "Informacao", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Erro ao excluir categoria. Categoria esta em uso", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }

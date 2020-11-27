@@ -40,17 +40,28 @@ namespace News_project.DAL
             connection.Disconnect();
         }
 
-        public void Delete(BLL.CategoryBLL categoryBLL)
+        public bool Delete(BLL.CategoryBLL categoryBLL)
         {
-            MySqlCommand cmd = new MySqlCommand();
-            cmd.CommandText = @"DELETE FROM CATEGORY WHERE ID_CATEGORY = @ID_CATEGORY";
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.CommandText = @"DELETE FROM CATEGORY WHERE ID_CATEGORY = @ID_CATEGORY";
 
-            cmd.Parameters.AddWithValue("@ID_CATEGORY", categoryBLL.IdCategory);
+                cmd.Parameters.AddWithValue("@ID_CATEGORY", categoryBLL.IdCategory);
 
-            cmd.Connection = connection.Connect();
-            cmd.ExecuteNonQuery();
+                cmd.Connection = connection.Connect();
+                cmd.ExecuteNonQuery();
 
-            connection.Disconnect();
+                connection.Disconnect();
+
+                return true;
+            }
+            catch (MySqlException e)
+            {
+                return false;
+            }
+
+            //MySql.Data.MySqlClient.MySqlException
         }
 
         public DataTable FindAll()
