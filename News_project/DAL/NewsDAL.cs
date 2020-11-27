@@ -86,7 +86,7 @@ namespace News_project.DAL
         {
             MySqlCommand cmd = new MySqlCommand();
 
-            cmd.CommandText = "SELECT * FROM NEWS WHERE ID_NEWS = @ID_NEWS";
+            cmd.CommandText = "SELECT id_news, news.id_category, title, subtitle, body, author, date, name_category FROM NEWS JOIN CATEGORY ON CATEGORY.id_category = NEWS.id_category where ID_NEWS = @ID_NEWS";
             cmd.Parameters.AddWithValue("@ID_NEWS", newsBLL.IdNews);
             cmd.Connection = connection.Connect();
             MySqlDataReader dataReader = cmd.ExecuteReader();
@@ -100,6 +100,7 @@ namespace News_project.DAL
                 newsBLL.SubTitle = dataReader["SUBTITLE"].ToString();
                 newsBLL.Body = dataReader["BODY"].ToString();
                 newsBLL.Author = dataReader["AUTHOR"].ToString();
+                newsBLL.Category = dataReader["NAME_CATEGORY"].ToString();
                 newsBLL.Date = (DateTime)dataReader["DATE"];
             }
 

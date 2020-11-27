@@ -32,9 +32,9 @@
             this.lblSubTitle = new System.Windows.Forms.Label();
             this.lblAuthor = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
-            this.lblCategory = new System.Windows.Forms.Label();
             this.txtBody = new System.Windows.Forms.TextBox();
             this.btnComment = new System.Windows.Forms.Button();
+            this.lblCategory = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -77,16 +77,6 @@
             this.lblDate.Text = "Data";
             this.lblDate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblCategory
-            // 
-            this.lblCategory.AutoSize = true;
-            this.lblCategory.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCategory.Location = new System.Drawing.Point(279, 85);
-            this.lblCategory.Name = "lblCategory";
-            this.lblCategory.Size = new System.Drawing.Size(83, 19);
-            this.lblCategory.TabIndex = 7;
-            this.lblCategory.Text = "Categoria";
-            // 
             // txtBody
             // 
             this.txtBody.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -109,20 +99,31 @@
             this.btnComment.UseVisualStyleBackColor = true;
             this.btnComment.Click += new System.EventHandler(this.btnComment_Click);
             // 
+            // lblCategory
+            // 
+            this.lblCategory.AutoSize = true;
+            this.lblCategory.Font = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCategory.Location = new System.Drawing.Point(266, 89);
+            this.lblCategory.Name = "lblCategory";
+            this.lblCategory.Size = new System.Drawing.Size(85, 19);
+            this.lblCategory.TabIndex = 13;
+            this.lblCategory.Text = "Categoria";
+            // 
             // NewsAndComment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(628, 482);
+            this.Controls.Add(this.lblCategory);
             this.Controls.Add(this.btnComment);
             this.Controls.Add(this.txtBody);
-            this.Controls.Add(this.lblCategory);
             this.Controls.Add(this.lblDate);
             this.Controls.Add(this.lblAuthor);
             this.Controls.Add(this.lblSubTitle);
             this.Controls.Add(this.lblTitle);
             this.Name = "NewsAndComment";
             this.Text = "News";
+            this.Load += new System.EventHandler(this.NewsAndComment_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -134,8 +135,8 @@
         private System.Windows.Forms.Label lblSubTitle;
         private System.Windows.Forms.Label lblAuthor;
         private System.Windows.Forms.Label lblDate;
-        private System.Windows.Forms.Label lblCategory;
         private System.Windows.Forms.TextBox txtBody;
         private System.Windows.Forms.Button btnComment;
+        private System.Windows.Forms.Label lblCategory;
     }
 }

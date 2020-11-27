@@ -25,8 +25,8 @@ namespace News_project.UI
             lblTitle.Text = newsBLL.Title;
             lblSubTitle.Text = newsBLL.SubTitle;
             lblAuthor.Text = newsBLL.Author;
-            //lblCategory.Text = newsBLL.IdCategory;
             lblDate.Text = newsBLL.Date.ToString();
+            lblCategory.Text = newsBLL.Category;
             txtBody.Text = newsBLL.Body;
         }
 
@@ -34,6 +34,11 @@ namespace News_project.UI
         {
             FrmComment frmComment = new FrmComment(newsBLL.IdNews);
             frmComment.ShowDialog();
+        }
+
+        private void NewsAndComment_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

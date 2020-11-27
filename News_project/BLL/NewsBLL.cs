@@ -14,6 +14,7 @@ namespace News_project.BLL
         private string subTitle;
         private string body;
         private string author;
+        private string category;
         private DateTime date;
         private List<CommentBLL> commentBLLs;
 
@@ -23,6 +24,7 @@ namespace News_project.BLL
         public string SubTitle { get => subTitle; set => subTitle = value; }
         public string Body { get => body; set => body = value; }
         public string Author { get => author; set => author = value; }
+        public string Category { get => category; set => category = value; }
         public DateTime Date { get => date; set => date = value; }
         internal List<CommentBLL> CommentBLLs { get => commentBLLs; set => commentBLLs = value; }
     }
