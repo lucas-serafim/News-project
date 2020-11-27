@@ -30,10 +30,10 @@
         {
             this.tabComment = new System.Windows.Forms.TabControl();
             this.tabNewComment = new System.Windows.Forms.TabPage();
-            this.tabFind = new System.Windows.Forms.TabPage();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnNewComment = new System.Windows.Forms.Button();
             this.txtBody = new System.Windows.Forms.TextBox();
+            this.tabFind = new System.Windows.Forms.TabPage();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.dvgComment = new System.Windows.Forms.DataGridView();
@@ -67,19 +67,6 @@
             this.tabNewComment.Text = "Novo comentario";
             this.tabNewComment.UseVisualStyleBackColor = true;
             // 
-            // tabFind
-            // 
-            this.tabFind.Controls.Add(this.btnDelete);
-            this.tabFind.Controls.Add(this.btnUpdate);
-            this.tabFind.Controls.Add(this.dvgComment);
-            this.tabFind.Location = new System.Drawing.Point(4, 22);
-            this.tabFind.Name = "tabFind";
-            this.tabFind.Padding = new System.Windows.Forms.Padding(3);
-            this.tabFind.Size = new System.Drawing.Size(476, 335);
-            this.tabFind.TabIndex = 1;
-            this.tabFind.Text = "Consultar";
-            this.tabFind.UseVisualStyleBackColor = true;
-            // 
             // btnClear
             // 
             this.btnClear.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -108,6 +95,19 @@
             this.txtBody.Name = "txtBody";
             this.txtBody.Size = new System.Drawing.Size(460, 285);
             this.txtBody.TabIndex = 15;
+            // 
+            // tabFind
+            // 
+            this.tabFind.Controls.Add(this.btnDelete);
+            this.tabFind.Controls.Add(this.btnUpdate);
+            this.tabFind.Controls.Add(this.dvgComment);
+            this.tabFind.Location = new System.Drawing.Point(4, 22);
+            this.tabFind.Name = "tabFind";
+            this.tabFind.Padding = new System.Windows.Forms.Padding(3);
+            this.tabFind.Size = new System.Drawing.Size(476, 335);
+            this.tabFind.TabIndex = 1;
+            this.tabFind.Text = "Consultar";
+            this.tabFind.UseVisualStyleBackColor = true;
             // 
             // btnDelete
             // 
@@ -149,7 +149,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 361);
             this.Controls.Add(this.tabComment);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "FrmComment";
+            this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Comentario";
             this.tabComment.ResumeLayout(false);
             this.tabNewComment.ResumeLayout(false);

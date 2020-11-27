@@ -140,11 +140,11 @@
     <Compile Include="UI\FrmUser.Designer.cs">
       <DependentUpon>FrmUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\NewsAndComment.cs">
+    <Compile Include="UI\FrmNewsAndComment.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\NewsAndComment.Designer.cs">
-      <DependentUpon>NewsAndComment.cs</DependentUpon>
+    <Compile Include="UI\FrmNewsAndComment.Designer.cs">
+      <DependentUpon>FrmNewsAndComment.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -173,8 +173,8 @@
     <EmbeddedResource Include="UI\FrmUser.resx">
       <DependentUpon>FrmUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\NewsAndComment.resx">
-      <DependentUpon>NewsAndComment.cs</DependentUpon>
+    <EmbeddedResource Include="UI\FrmNewsAndComment.resx">
+      <DependentUpon>FrmNewsAndComment.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

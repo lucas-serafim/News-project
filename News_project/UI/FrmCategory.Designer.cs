@@ -30,14 +30,14 @@
         {
             this.tabCategory = new System.Windows.Forms.TabControl();
             this.tabRegister = new System.Windows.Forms.TabPage();
-            this.tabFind = new System.Windows.Forms.TabPage();
             this.txtName = new System.Windows.Forms.TextBox();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnRegister = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.dvgCategory = new System.Windows.Forms.DataGridView();
+            this.tabFind = new System.Windows.Forms.TabPage();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
+            this.dvgCategory = new System.Windows.Forms.DataGridView();
             this.tabCategory.SuspendLayout();
             this.tabRegister.SuspendLayout();
             this.tabFind.SuspendLayout();
@@ -69,19 +69,6 @@
             this.tabRegister.Tag = "3";
             this.tabRegister.Text = "Registrar";
             this.tabRegister.UseVisualStyleBackColor = true;
-            // 
-            // tabFind
-            // 
-            this.tabFind.Controls.Add(this.btnDelete);
-            this.tabFind.Controls.Add(this.btnUpdate);
-            this.tabFind.Controls.Add(this.dvgCategory);
-            this.tabFind.Location = new System.Drawing.Point(4, 22);
-            this.tabFind.Name = "tabFind";
-            this.tabFind.Padding = new System.Windows.Forms.Padding(3);
-            this.tabFind.Size = new System.Drawing.Size(476, 285);
-            this.tabFind.TabIndex = 1;
-            this.tabFind.Text = "Consultar";
-            this.tabFind.UseVisualStyleBackColor = true;
             // 
             // txtName
             // 
@@ -123,14 +110,18 @@
             this.label1.TabIndex = 9;
             this.label1.Text = "Nome";
             // 
-            // dvgCategory
+            // tabFind
             // 
-            this.dvgCategory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dvgCategory.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dvgCategory.Location = new System.Drawing.Point(3, 3);
-            this.dvgCategory.Name = "dvgCategory";
-            this.dvgCategory.Size = new System.Drawing.Size(470, 238);
-            this.dvgCategory.TabIndex = 0;
+            this.tabFind.Controls.Add(this.btnDelete);
+            this.tabFind.Controls.Add(this.btnUpdate);
+            this.tabFind.Controls.Add(this.dvgCategory);
+            this.tabFind.Location = new System.Drawing.Point(4, 22);
+            this.tabFind.Name = "tabFind";
+            this.tabFind.Padding = new System.Windows.Forms.Padding(3);
+            this.tabFind.Size = new System.Drawing.Size(476, 285);
+            this.tabFind.TabIndex = 1;
+            this.tabFind.Text = "Consultar";
+            this.tabFind.UseVisualStyleBackColor = true;
             // 
             // btnDelete
             // 
@@ -154,13 +145,26 @@
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
+            // dvgCategory
+            // 
+            this.dvgCategory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dvgCategory.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dvgCategory.Location = new System.Drawing.Point(3, 3);
+            this.dvgCategory.Name = "dvgCategory";
+            this.dvgCategory.Size = new System.Drawing.Size(470, 238);
+            this.dvgCategory.TabIndex = 0;
+            // 
             // FrmCategory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 311);
             this.Controls.Add(this.tabCategory);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "FrmCategory";
+            this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Categoria";
             this.Load += new System.EventHandler(this.FrmCategory_Load);
             this.tabCategory.ResumeLayout(false);

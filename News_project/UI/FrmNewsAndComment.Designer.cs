@@ -1,6 +1,6 @@
 ﻿namespace News_project.UI
 {
-    partial class NewsAndComment
+    partial class FrmNewsAndComment
     {
         /// <summary>
         /// Required designer variable.
@@ -109,7 +109,7 @@
             this.lblCategory.TabIndex = 13;
             this.lblCategory.Text = "Categoria";
             // 
-            // NewsAndComment
+            // FrmNewsAndComment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -121,9 +121,12 @@
             this.Controls.Add(this.lblAuthor);
             this.Controls.Add(this.lblSubTitle);
             this.Controls.Add(this.lblTitle);
-            this.Name = "NewsAndComment";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.Name = "FrmNewsAndComment";
+            this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "News";
-            this.Load += new System.EventHandler(this.NewsAndComment_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

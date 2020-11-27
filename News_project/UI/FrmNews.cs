@@ -51,14 +51,14 @@ namespace News_project.UI
 
             if (txtTitle.Text == string.Empty || txtSubTitle.Text == string.Empty || txtBody.Text == string.Empty || cboCategory.Text == string.Empty)
             {
-                MessageBox.Show("Preencha todos os campos");
+                MessageBox.Show("Preencha todos os campos", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 if (update)
                 {
                     newsDAL.Update(newsBLL);
-                    MessageBox.Show("Dados atualizados com sucesso!");
+                    MessageBox.Show("Dados atualizados com sucesso!", "Informacao", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     clear();
 
                     update = false;
@@ -66,7 +66,7 @@ namespace News_project.UI
                 else
                 {
                     newsDAL.Register(newsBLL);
-                    MessageBox.Show("Cadastro realizado com sucesso!");
+                    MessageBox.Show("Cadastro realizado com sucesso!", "Informacao", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     clear();
                 }
             }
@@ -108,7 +108,7 @@ namespace News_project.UI
 
                     dvgNews.DataSource = newsDAL.FindAll();
 
-                    MessageBox.Show("Exclusão realizada com sucesso");
+                    MessageBox.Show("Exclusão realizada com sucesso", "Informacao", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
@@ -120,7 +120,9 @@ namespace News_project.UI
                 int id = Convert.ToInt32(dvgNews[0, dvgNews.CurrentRow.Index].Value);
 
                 FrmNewsAndComment newsAndComment = new FrmNewsAndComment(id);
+                Hide();
                 newsAndComment.ShowDialog();
+                Show();
             }
         }
 

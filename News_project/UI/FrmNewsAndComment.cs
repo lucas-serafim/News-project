@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace News_project.UI
 {
-    public partial class NewsAndComment : Form
+    public partial class FrmNewsAndComment : Form
     {
         BLL.NewsBLL newsBLL = new BLL.NewsBLL();
         DAL.NewsDAL newsDAL = new DAL.NewsDAL();
 
-        public NewsAndComment(int id)
+        public FrmNewsAndComment(int id)
         {
             InitializeComponent();
 
@@ -33,12 +33,9 @@ namespace News_project.UI
         private void btnComment_Click(object sender, EventArgs e)
         {
             FrmComment frmComment = new FrmComment(newsBLL.IdNews);
+            Hide();
             frmComment.ShowDialog();
-        }
-
-        private void NewsAndComment_Load(object sender, EventArgs e)
-        {
-
+            Show();
         }
     }
 }

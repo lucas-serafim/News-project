@@ -42,12 +42,12 @@ namespace News_project
                 }
                 else
                 {
-                    MessageBox.Show("Email ou senha invalidos. Tente novamente");
+                    MessageBox.Show("Email ou senha invalidos. Tente novamente", "Erro ao logar", MessageBoxButtons.OK, MessageBoxIcon.Error); ;
                 }
             }
             else
             {
-                MessageBox.Show("Preencha todos os campos");
+                MessageBox.Show("Preencha todos os campos", "Erro ao logar", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

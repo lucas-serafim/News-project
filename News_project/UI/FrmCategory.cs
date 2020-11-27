@@ -40,14 +40,14 @@ namespace News_project.UI
 
             if (txtName.Text == string.Empty)
             {
-                MessageBox.Show("Preencha todos os campos");
+                MessageBox.Show("Preencha todos os campos", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 if (update)
                 {
                     categoryDAL.Update(categoryBLL);
-                    MessageBox.Show("Dados atualizados com sucesso!");
+                    MessageBox.Show("Dados atualizados com sucesso!", "Informacao", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     clear();
 
                     update = false;
@@ -55,7 +55,7 @@ namespace News_project.UI
                 else
                 {
                     categoryDAL.Register(categoryBLL);
-                    MessageBox.Show("Cadastro realizado com sucesso!");
+                    MessageBox.Show("Cadastro realizado com sucesso!", "Informacao", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     clear();
                 }
             }
@@ -79,7 +79,7 @@ namespace News_project.UI
 
                     dvgCategory.DataSource = categoryDAL.FindAll();
 
-                    MessageBox.Show("Exclusão realizada com sucesso");
+                    MessageBox.Show("Exclusão realizada com sucesso", "Informacao", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }

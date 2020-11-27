@@ -64,7 +64,7 @@ namespace News_project.DAL
         {
             MySqlCommand cmd = new MySqlCommand();
             cmd.CommandText = @"DELETE FROM NEWS WHERE ID_NEWS = @ID_NEWS";
-            cmd.Parameters.AddWithValue(@"ID", newsBLL.IdNews);
+            cmd.Parameters.AddWithValue(@"ID_NEWS", newsBLL.IdNews);
 
             cmd.Connection = connection.Connect();
             cmd.ExecuteNonQuery();

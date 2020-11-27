@@ -266,7 +266,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(482, 463);
             this.Controls.Add(this.tabNews);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "FrmNews";
+            this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Noticia";
             this.Load += new System.EventHandler(this.FrmNews_Load);
             this.tabNews.ResumeLayout(false);

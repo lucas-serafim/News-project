@@ -42,14 +42,14 @@ namespace News_project.UI
             
             if (txtName.Text == string.Empty || txtEmail.Text == string.Empty || txtPassword.Text == string.Empty || cboProfile.Text == string.Empty)
             {
-                MessageBox.Show("Preencha todos os campos");
+                MessageBox.Show("Preencha todos os campos", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 if (update)
                 {
                     userDAL.Update(userBLL);
-                    MessageBox.Show("Dados atualizados com sucesso!");
+                    MessageBox.Show("Dados atualizados com sucesso!", "Informacao", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     clear();
 
                     update = false;
@@ -57,7 +57,7 @@ namespace News_project.UI
                 else
                 {
                     userDAL.Register(userBLL);
-                    MessageBox.Show("Cadastro realizado com sucesso!");
+                    MessageBox.Show("Cadastro realizado com sucesso!", "Informacao", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     clear();
                 }
             }
@@ -107,7 +107,7 @@ namespace News_project.UI
 
                     dvgUsers.DataSource = userDAL.FindAll();
 
-                    MessageBox.Show("Exclusão realizada com sucesso");
+                    MessageBox.Show("Exclusão realizada com sucesso", "Informacao", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
