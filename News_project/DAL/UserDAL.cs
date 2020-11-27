@@ -99,5 +99,34 @@ namespace News_project.DAL
             connection.Disconnect();
             return userBLL;
         }
+
+        public BLL.UserBLL Login(BLL.UserBLL userBLL)
+        {
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.CommandText = "SELECT * FROM USER WHERE EMAIL = @EMAIL AND PASSWORD = @PASSWORD";
+            cmd.Parameters.AddWithValue("@EMAIL", userBLL.Email);
+            cmd.Parameters.AddWithValue("@PASSWORD", userBLL.Password);
+
+            cmd.Connection = connection.Connect();
+
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+
+            if (dataReader.Read())
+            {
+                userBLL.IdUser = Convert.ToInt32(dataReader["ID"]);
+                userBLL.Name = dataReader["NAME"].ToString();
+                userBLL.Email = dataReader["EMAIL"].ToString();
+                userBLL.Password = dataReader["PASSWORD"].ToString();
+                userBLL.UserProfile = dataReader["USERPROFILE"].ToString();
+            }
+            else
+            {
+                userBLL.IdUser = 0;
+            }
+
+            dataReader.Close();
+            connection.Disconnect();
+            return userBLL;
+        }
     }
 }

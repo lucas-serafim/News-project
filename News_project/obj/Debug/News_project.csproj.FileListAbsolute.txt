@@ -38,3 +38,4 @@ C:\Users\lucas_000\source\repos\News_project\News_project\obj\Debug\News_project
 C:\Users\lucas_000\source\repos\News_project\News_project\obj\Debug\News_project.UI.FrmNews.resources
 C:\Users\lucas_000\source\repos\News_project\News_project\obj\Debug\News_project.UI.NewsAndComment.resources
 C:\Users\lucas_000\source\repos\News_project\News_project\obj\Debug\News_project.UI.FrmComment.resources
+C:\Users\lucas_000\source\repos\News_project\News_project\obj\Debug\News_project.UI.FrmMenu.resources
