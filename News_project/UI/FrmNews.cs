@@ -119,7 +119,7 @@ namespace News_project.UI
             {
                 int id = Convert.ToInt32(dvgNews[0, dvgNews.CurrentRow.Index].Value);
 
-                NewsAndComment newsAndComment = new NewsAndComment(id);
+                FrmNewsAndComment newsAndComment = new FrmNewsAndComment(id);
                 newsAndComment.ShowDialog();
             }
         }
