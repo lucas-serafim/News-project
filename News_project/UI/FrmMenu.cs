@@ -17,6 +17,14 @@ namespace News_project.UI
             InitializeComponent();
         }
 
+        private void FrmMenu_Load(object sender, EventArgs e)
+        {
+            if (Form1.profile != Enums.UserProfile.Administrador.ToString())
+            {
+                btnUser.Enabled = false;
+            }
+        }
+
         private void btnUser_Click(object sender, EventArgs e)
         {
             FrmUser frmUser = new FrmUser();

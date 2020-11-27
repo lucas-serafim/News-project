@@ -76,6 +76,7 @@
             this.Controls.Add(this.btnUser);
             this.Name = "FrmMenu";
             this.Text = "Menu";
+            this.Load += new System.EventHandler(this.FrmMenu_Load);
             this.ResumeLayout(false);
 
         }

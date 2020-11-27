@@ -40,13 +40,13 @@ namespace News_project.DAL
                                 PASSWORD = @PASSWORD,
                                 EMAIL = @EMAIL,
                                 USERPROFILE = @USERPROFILE
-                                WHERE ID = @ID";
+                                WHERE ID_USER = @ID_USER";
 
             cmd.Parameters.AddWithValue("@NAME", userBLL.Name);
             cmd.Parameters.AddWithValue("@PASSWORD", userBLL.Password);
             cmd.Parameters.AddWithValue("@EMAIL", userBLL.Email);
             cmd.Parameters.AddWithValue("@USERPROFILE", userBLL.UserProfile);
-            cmd.Parameters.AddWithValue("@ID", userBLL.IdUser);
+            cmd.Parameters.AddWithValue("@ID_USER", userBLL.IdUser);
 
             cmd.Connection = connection.Connect();
             cmd.ExecuteNonQuery();
@@ -57,8 +57,8 @@ namespace News_project.DAL
         public void Delete(BLL.UserBLL userBLL)
         {
             MySqlCommand cmd = new MySqlCommand();
-            cmd.CommandText = @"DELETE FROM USER WHERE ID = @ID";
-            cmd.Parameters.AddWithValue("@ID", userBLL.IdUser);
+            cmd.CommandText = @"DELETE FROM USER WHERE ID_USER = @ID_USER";
+            cmd.Parameters.AddWithValue("@ID_USER", userBLL.IdUser);
 
             cmd.Connection = connection.Connect();
             cmd.ExecuteNonQuery();
@@ -81,14 +81,14 @@ namespace News_project.DAL
         {
             MySqlCommand cmd = new MySqlCommand();
 
-            cmd.CommandText = "SELECT * FROM USER WHERE ID = @ID";
-            cmd.Parameters.AddWithValue("@ID", userBLL.IdUser);
+            cmd.CommandText = "SELECT * FROM USER WHERE ID_USER = @ID_USER";
+            cmd.Parameters.AddWithValue("@ID_USER", userBLL.IdUser);
             cmd.Connection = connection.Connect();
             MySqlDataReader dataReader = cmd.ExecuteReader();
 
             if (dataReader.Read())
             {
-                userBLL.IdUser = Convert.ToInt32(dataReader["ID"]);
+                userBLL.IdUser = Convert.ToInt32(dataReader["ID_USER"]);
                 userBLL.Name = dataReader["NAME"].ToString();
                 userBLL.Email = dataReader["EMAIL"].ToString();
                 userBLL.Password = dataReader["PASSWORD"].ToString();
@@ -113,7 +113,7 @@ namespace News_project.DAL
 
             if (dataReader.Read())
             {
-                userBLL.IdUser = Convert.ToInt32(dataReader["ID"]);
+                userBLL.IdUser = Convert.ToInt32(dataReader["ID_USER"]);
                 userBLL.Name = dataReader["NAME"].ToString();
                 userBLL.Email = dataReader["EMAIL"].ToString();
                 userBLL.Password = dataReader["PASSWORD"].ToString();

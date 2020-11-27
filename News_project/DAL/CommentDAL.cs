@@ -17,11 +17,11 @@ namespace News_project.DAL
         {
             MySqlCommand cmd = new MySqlCommand();
             cmd.CommandText = @"INSERT INTO COMMENT
-                                (IDNEWS, BODY, DATE)
+                                (ID_NEWS, BODY, DATE)
                                 VALUES
-                                (@IDNEWS, @BODY, @DATE)";
+                                (@ID_NEWS, @BODY, @DATE)";
 
-            cmd.Parameters.AddWithValue("@IDNEWS", commentBLL.IdNews);
+            cmd.Parameters.AddWithValue("@ID_NEWS", commentBLL.IdNews);
             cmd.Parameters.AddWithValue("@BODY", commentBLL.Body);
             cmd.Parameters.AddWithValue("@DATE", commentBLL.Date);
 
@@ -35,14 +35,14 @@ namespace News_project.DAL
         {
             MySqlCommand cmd = new MySqlCommand();
             cmd.CommandText = @"UPDATE COMMENT SET
-                                IDNEWS = @IDNEWS,
+                                ID_NEWS = @ID_NEWS,
                                 BODY = @BODY
-                                WHERE ID = @ID";
+                                WHERE ID_COMMENT = @ID_COMMENT";
 
-            cmd.Parameters.AddWithValue("@IDNEWS", commentBLL.IdNews);
+            cmd.Parameters.AddWithValue("@ID_NEWS", commentBLL.IdNews);
             cmd.Parameters.AddWithValue("@BODY", commentBLL.Body);
             cmd.Parameters.AddWithValue("@DATE", commentBLL.Date);
-            cmd.Parameters.AddWithValue("@ID", commentBLL.IdComment);
+            cmd.Parameters.AddWithValue("@ID_COMMENT", commentBLL.IdComment);
 
             cmd.Connection = connection.Connect();
             cmd.ExecuteNonQuery();
@@ -53,9 +53,9 @@ namespace News_project.DAL
         public void Delete(BLL.CommentBLL commentBLL)
         {
             MySqlCommand cmd = new MySqlCommand();
-            cmd.CommandText = @"DELETE FROM COMMENT WHERE ID = @ID";
+            cmd.CommandText = @"DELETE FROM COMMENT WHERE ID_COMMENT = @ID_COMMENT";
 
-            cmd.Parameters.AddWithValue("@ID", commentBLL.IdComment);
+            cmd.Parameters.AddWithValue("@ID_COMMENT", commentBLL.IdComment);
 
             cmd.Connection = connection.Connect();
             cmd.ExecuteNonQuery();
@@ -65,9 +65,9 @@ namespace News_project.DAL
 
         public DataTable FindAll(BLL.CommentBLL commentBLL)
         {
-            MySqlDataAdapter dataAdapter = new MySqlDataAdapter("SELECT * FROM COMMENT WHERE IDNEWS = @IDNEWS", connection.Connect());
+            MySqlDataAdapter dataAdapter = new MySqlDataAdapter("SELECT * FROM COMMENT WHERE ID_NEWS = @ID_NEWS", connection.Connect());
 
-            dataAdapter.SelectCommand.Parameters.AddWithValue("@IDNEWS", commentBLL.IdNews);
+            dataAdapter.SelectCommand.Parameters.AddWithValue("@ID_NEWS", commentBLL.IdNews);
 
             DataTable dataTable = new DataTable();
             dataAdapter.Fill(dataTable);
@@ -79,14 +79,14 @@ namespace News_project.DAL
         public BLL.CommentBLL FindCategory(BLL.CommentBLL commentBLL)
         {
             MySqlCommand cmd = new MySqlCommand();
-            cmd.CommandText = "SELECT * FROM COMMENT WHERE ID = @ID";
-            cmd.Parameters.AddWithValue("@ID", commentBLL.IdComment);
+            cmd.CommandText = "SELECT * FROM COMMENT WHERE ID_COMMENT = @ID_COMMENT";
+            cmd.Parameters.AddWithValue("@ID_COMMENT", commentBLL.IdComment);
             cmd.Connection = connection.Connect();
             MySqlDataReader dataReader = cmd.ExecuteReader();
 
             if (dataReader.Read())
             {
-                commentBLL.IdComment = Convert.ToInt32(dataReader["ID"]);
+                commentBLL.IdComment = Convert.ToInt32(dataReader["ID_COMMENT"]);
                 commentBLL.Body = dataReader["BODY"].ToString();
             }
 

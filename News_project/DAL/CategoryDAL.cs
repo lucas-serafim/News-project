@@ -16,9 +16,9 @@ namespace News_project.DAL
         public void Register(BLL.CategoryBLL categoryBLL)
         {
             MySqlCommand cmd = new MySqlCommand();
-            cmd.CommandText = @"INSERT INTO CATEGORY (NAME) VALUES (@NAME)";
+            cmd.CommandText = @"INSERT INTO CATEGORY (NAME_CATEGORY) VALUES (@NAME_CATEGORY)";
 
-            cmd.Parameters.AddWithValue("@NAME", categoryBLL.Name);
+            cmd.Parameters.AddWithValue("@NAME_CATEGORY", categoryBLL.Name);
 
             cmd.Connection = connection.Connect();
             cmd.ExecuteNonQuery();
@@ -29,10 +29,10 @@ namespace News_project.DAL
         public void Update(BLL.CategoryBLL categoryBLL)
         {
             MySqlCommand cmd = new MySqlCommand();
-            cmd.CommandText = @"UPDATE CATEGORY SET NAME = @NAME WHERE ID = @ID";
+            cmd.CommandText = @"UPDATE CATEGORY SET NAME_CATEGORY = @NAME_CATEGORY WHERE ID_CATEGORY = @ID_CATEGORY";
 
-            cmd.Parameters.AddWithValue("@NAME", categoryBLL.Name);
-            cmd.Parameters.AddWithValue("@ID", categoryBLL.IdCategory);
+            cmd.Parameters.AddWithValue("@NAME_CATEGORY", categoryBLL.Name);
+            cmd.Parameters.AddWithValue("@ID_CATEGORY", categoryBLL.IdCategory);
 
             cmd.Connection = connection.Connect();
             cmd.ExecuteNonQuery();
@@ -43,9 +43,9 @@ namespace News_project.DAL
         public void Delete(BLL.CategoryBLL categoryBLL)
         {
             MySqlCommand cmd = new MySqlCommand();
-            cmd.CommandText = @"DELETE FROM CATEGORY WHERE ID = @ID";
+            cmd.CommandText = @"DELETE FROM CATEGORY WHERE ID_CATEGORY = @ID_CATEGORY";
 
-            cmd.Parameters.AddWithValue("@ID", categoryBLL.IdCategory);
+            cmd.Parameters.AddWithValue("@ID_CATEGORY", categoryBLL.IdCategory);
 
             cmd.Connection = connection.Connect();
             cmd.ExecuteNonQuery();
@@ -66,15 +66,15 @@ namespace News_project.DAL
         public BLL.CategoryBLL FindCategory(BLL.CategoryBLL categoryBLL)
         {
             MySqlCommand cmd = new MySqlCommand();
-            cmd.CommandText = "SELECT * FROM CATEGORY WHERE ID = @ID";
-            cmd.Parameters.AddWithValue("@ID", categoryBLL.IdCategory);
+            cmd.CommandText = "SELECT * FROM CATEGORY WHERE ID_CATEGORY = @ID_CATEGORY";
+            cmd.Parameters.AddWithValue("@ID_CATEGORY", categoryBLL.IdCategory);
             cmd.Connection = connection.Connect();
             MySqlDataReader dataReader = cmd.ExecuteReader();
 
             if (dataReader.Read())
             {
-                categoryBLL.IdCategory = Convert.ToInt32(dataReader["ID"]);
-                categoryBLL.Name = dataReader["NAME"].ToString();
+                categoryBLL.IdCategory = Convert.ToInt32(dataReader["ID_CATEGORY"]);
+                categoryBLL.Name = dataReader["NAME_CATEGORY"].ToString();
             }
 
             dataReader.Close();

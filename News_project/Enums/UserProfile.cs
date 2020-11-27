@@ -10,6 +10,7 @@ namespace News_project.Enums
     {
         Administrador,
         Jornalista,
+        Estagiario,
         Cliente,
     }
 }

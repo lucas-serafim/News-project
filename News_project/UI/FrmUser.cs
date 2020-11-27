@@ -27,6 +27,7 @@ namespace News_project.UI
             dvgUsers.DataSource = userDAL.FindAll();
 
             cboProfile.Items.Add(Enums.UserProfile.Cliente);
+            cboProfile.Items.Add(Enums.UserProfile.Estagiario);
             cboProfile.Items.Add(Enums.UserProfile.Jornalista);
             cboProfile.Items.Add(Enums.UserProfile.Administrador);
         }

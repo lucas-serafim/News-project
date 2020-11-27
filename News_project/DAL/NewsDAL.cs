@@ -17,11 +17,11 @@ namespace News_project.DAL
         {
             MySqlCommand cmd = new MySqlCommand();
             cmd.CommandText = @"INSERT INTO NEWS
-                                (IDCATEGORY, TITLE, SUBTITLE, BODY, AUTHOR, DATE)
+                                (ID_CATEGORY, TITLE, SUBTITLE, BODY, AUTHOR, DATE)
                                 VALUES
-                                (@IDCATEGORY, @TITLE, @SUBTITLE, @BODY, @AUTHOR, @DATE)";
+                                (@ID_CATEGORY, @TITLE, @SUBTITLE, @BODY, @AUTHOR, @DATE)";
 
-            cmd.Parameters.AddWithValue("@IDCATEGORY", newsBLL.IdCategory);
+            cmd.Parameters.AddWithValue("@ID_CATEGORY", newsBLL.IdCategory);
             cmd.Parameters.AddWithValue("@TITLE", newsBLL.Title);
             cmd.Parameters.AddWithValue("@SUBTITLE", newsBLL.SubTitle);
             cmd.Parameters.AddWithValue("@BODY", newsBLL.Body);
@@ -38,21 +38,21 @@ namespace News_project.DAL
         {
             MySqlCommand cmd = new MySqlCommand();
             cmd.CommandText = @"UPDATE NEWS SET
-                                IDCATEGORY = @IDCATEGORY,
+                                ID_CATEGORY = @ID_CATEGORY,
                                 TITLE = @TITLE,
                                 SUBTITLE = @SUBTITLE,
                                 BODY = @BODY,
                                 AUTHOR = @AUTHOR,
                                 DATE = @DATE
-                                WHERE ID = @ID";
+                                WHERE ID_NEWS = @ID_NEWS";
 
-            cmd.Parameters.AddWithValue("@IDCATEGORY", newsBLL.IdCategory);
+            cmd.Parameters.AddWithValue("@ID_CATEGORY", newsBLL.IdCategory);
             cmd.Parameters.AddWithValue("@TITLE", newsBLL.Title);
             cmd.Parameters.AddWithValue("@SUBTITLE", newsBLL.SubTitle);
             cmd.Parameters.AddWithValue("@BODY", newsBLL.Body);
             cmd.Parameters.AddWithValue("@AUTHOR", newsBLL.Author);
             cmd.Parameters.AddWithValue("@DATE", newsBLL.Date);
-            cmd.Parameters.AddWithValue("@ID", newsBLL.IdNews);
+            cmd.Parameters.AddWithValue("@ID_NEWS", newsBLL.IdNews);
 
             cmd.Connection = connection.Connect();
             cmd.ExecuteNonQuery();
@@ -63,7 +63,7 @@ namespace News_project.DAL
         public void Delete(BLL.NewsBLL newsBLL)
         {
             MySqlCommand cmd = new MySqlCommand();
-            cmd.CommandText = @"DELETE FROM NEWS WHERE ID = @ID";
+            cmd.CommandText = @"DELETE FROM NEWS WHERE ID_NEWS = @ID_NEWS";
             cmd.Parameters.AddWithValue(@"ID", newsBLL.IdNews);
 
             cmd.Connection = connection.Connect();
@@ -74,7 +74,7 @@ namespace News_project.DAL
 
         public DataTable FindAll()
         {
-            MySqlDataAdapter dataAdapter = new MySqlDataAdapter("SELECT * FROM NEWS", connection.Connect());
+            MySqlDataAdapter dataAdapter = new MySqlDataAdapter("SELECT id_news, title, subtitle, body, author, date, name_category FROM NEWS JOIN CATEGORY ON CATEGORY.id_category = NEWS.id_category", connection.Connect());
             DataTable dataTable = new DataTable();
             dataAdapter.Fill(dataTable);
             connection.Disconnect();
@@ -86,16 +86,16 @@ namespace News_project.DAL
         {
             MySqlCommand cmd = new MySqlCommand();
 
-            cmd.CommandText = "SELECT * FROM NEWS WHERE ID = @ID";
-            cmd.Parameters.AddWithValue("@ID", newsBLL.IdNews);
+            cmd.CommandText = "SELECT * FROM NEWS WHERE ID_NEWS = @ID_NEWS";
+            cmd.Parameters.AddWithValue("@ID_NEWS", newsBLL.IdNews);
             cmd.Connection = connection.Connect();
             MySqlDataReader dataReader = cmd.ExecuteReader();
 
             if (dataReader.Read())
             {
 
-                newsBLL.IdNews = Convert.ToInt32(dataReader["ID"]);
-                newsBLL.IdCategory = Convert.ToInt32(dataReader["IDCATEGORY"]);
+                newsBLL.IdNews = Convert.ToInt32(dataReader["ID_NEWS"]);
+                newsBLL.IdCategory = Convert.ToInt32(dataReader["ID_CATEGORY"]);
                 newsBLL.Title = dataReader["TITLE"].ToString();
                 newsBLL.SubTitle = dataReader["SUBTITLE"].ToString();
                 newsBLL.Body = dataReader["BODY"].ToString();

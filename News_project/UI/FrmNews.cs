@@ -28,9 +28,16 @@ namespace News_project.UI
         {  
             cboCategory.DataSource = categoryDAL.FindAll();
 
-            cboCategory.DisplayMember = "name";
-            cboCategory.ValueMember = "id";
+            cboCategory.DisplayMember = "name_category";
+            cboCategory.ValueMember = "id_category";
             dvgNews.DataSource = newsDAL.FindAll();
+
+            if (Form1.profile == Enums.UserProfile.Cliente.ToString())
+            {
+                btnRegister.Enabled = false;
+                btnDelete.Enabled = false;
+                btnUpdate.Enabled = false;
+            }
         }
 
         private void btnRegister_Click(object sender, EventArgs e)

@@ -25,6 +25,13 @@ namespace News_project.UI
         private void FrmCategory_Load(object sender, EventArgs e)
         {
             dvgCategory.DataSource = categoryDAL.FindAll();
+
+            if (Form1.profile == Enums.UserProfile.Cliente.ToString())
+            {
+                btnRegister.Enabled = false;
+                btnDelete.Enabled = false;
+                btnUpdate.Enabled = false;
+            }
         }
 
         private void btnRegister_Click(object sender, EventArgs e)
